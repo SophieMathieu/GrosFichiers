@@ -1,5 +1,6 @@
-#!/home/campus-11/anaconda3/bin/python
-__author__ = 'Cyril François Sophie Mathieu'
+# -*- coding: utf-8 -*-
+__author__ = 'Cyril François'
+
 
 import pandas as pd
 import numpy as np
@@ -26,7 +27,7 @@ mergeRatings = pd.merge(pd.merge(users, ratings), movies)
 def cloneDF(df):
     return pd.DataFrame(df.values.copy(),
                         df.index.copy(),
-                        df.columns.copy()).convert_objects(convert_numeric=True)
+                        df.columns.copy()).apply(pd.to_numeric, errors='coerce')
 
 
 # Show Films with more votes. (groupby + sorted)
